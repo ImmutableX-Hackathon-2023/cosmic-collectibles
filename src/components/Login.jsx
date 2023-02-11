@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
-
 import { useAccountContext } from '../hooks/AccountContext';
+
 const Login = () => {
   const [web3, setWeb3] = useState(null);
-  const [account, setAccount] = useState(null);
-  // const [account, dispatch]= useAccountContext
+  // const [account, setAccount] = useState(null);
+  const {account, dispatch}= useAccountContext()
   // console.log(account);
 
   useEffect(() => {
@@ -18,9 +18,9 @@ const Login = () => {
       // Request the user to access their MetaMask account
       window.ethereum.enable().then((accounts) => {
         console.log(accounts)
-        setAccount(accounts[0]);
+        // setAccount(accounts[0]);
         //update account with accounts[0]
-        // dispatch({type: 'UPDATE', payload:accounts[0]})
+        dispatch({type: 'UPDATE', payload:accounts[0]})
       });
     } 
     // else {
