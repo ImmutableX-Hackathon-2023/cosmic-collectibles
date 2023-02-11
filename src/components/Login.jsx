@@ -8,6 +8,13 @@ const Login = () => {
   const {account, dispatch}= useAccountContext()
   // console.log(account);
 
+  // const fetchData = async (address) => {
+  //   const response = await fetch(`http://localhost/rocket/${address}`);
+  //   const data = await response.json();
+  //   console
+  //   return data;
+  // };
+
   useEffect(() => {
     // Check if the user has MetaMask installed and activated
     console.log('run ethereum')
@@ -21,12 +28,12 @@ const Login = () => {
         // setAccount(accounts[0]);
         //update account with accounts[0]
         dispatch({type: 'UPDATE', payload:accounts[0]})
+        console.log(account)
+        // fetchData(account).then((data) => {
+        //   // do something (data)....
+        // });
       });
     } 
-    // else {
-    //   console.error('MetaMask is not installed or activated');
-    //   return <div>MetaMask is not installed or activated</div>;
-    // }
   }, []);
 
   if(!window.ethereum){
@@ -39,7 +46,6 @@ const Login = () => {
   }
 
   return (
-    // <Redirect to="/game" />
     <div>
       <h1>You have logged in!!</h1>
       <button onClick={() => window.location.href="/galaxy-quest/game"}>Start game</button>
