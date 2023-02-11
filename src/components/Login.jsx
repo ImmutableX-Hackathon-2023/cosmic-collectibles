@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
-
+import { useAccountContext } from '../hooks/AccountContext';
 const Login = () => {
   const [web3, setWeb3] = useState(null);
   const [account, setAccount] = useState(null);
+  // const [account, dispatch]= useAccountContext
+  // console.log(account);
 
   useEffect(() => {
     // Check if the user has MetaMask installed and activated
@@ -16,11 +18,20 @@ const Login = () => {
       window.ethereum.enable().then((accounts) => {
         console.log(accounts)
         setAccount(accounts[0]);
+        //update account with accounts[0]
+        // dispatch({type: 'UPDATE', payload:accounts[0]})
       });
-    } else {
-      console.error('MetaMask is not installed or activated');
-    }
+    } 
+    // else {
+    //   console.error('MetaMask is not installed or activated');
+    //   return <div>MetaMask is not installed or activated</div>;
+    // }
   }, []);
+
+  if(!window.ethereum){
+    console.error('MetaMask is not installed or activated');
+      return <div>MetaMask is not installed or activated</div>;
+  }
 
   if (!web3 || !account) {
     return <div>Loading...</div>;
