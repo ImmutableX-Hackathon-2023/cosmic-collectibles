@@ -3,20 +3,12 @@ export default function Footer() {
     <footer className="fixed sm:static bottom-0 sm:z-10 w-full shadow-custom ">
       <div className="py-3 px-4  bg-black bg-opacity-10 flex items-center justify-between">
         <span className="text-sm text-gray-300 sm:text-center ">
-          © 2022{" "}
-          <a
-            className="hover:text-black"
-            target={"_blank"}
-            href="https://kisokumar.com/"
-          >
-            Kisho Makes Stuff.
-          </a>{" "}
-          All Rights Reserved.
+          © 2022 Cosmic Collectibles All Rights Reserved.
         </span>
         <div className="flex mt-4 space-x-6 justify-center mt-0">
           <a
             target={"_blank"}
-            href="https://github.com/Kisokumar"
+            href="https://github.com/ImmutableX-Hackathon-2023"
             className="text-gray-900 hover:text-white "
           >
             <svg
@@ -31,7 +23,6 @@ export default function Footer() {
                 clipRule="evenodd"
               />
             </svg>
-            <span className="sr-only">GitHub account</span>
           </a>
         </div>
       </div>

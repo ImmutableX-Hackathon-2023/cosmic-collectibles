@@ -1,5 +1,5 @@
-import Button from "./utils/Button";
 import Base from "./Base";
+import Button from "./utils/Button";
 
 export default class MainMenu extends Base {
   constructor() {
@@ -75,53 +75,44 @@ export default class MainMenu extends Base {
 
     this.clicked = false;
     this.singlePlayer = new Button(
-      screenCenterX - 300,
-      screenCenterY + 100,
-      "Single Player",
+      screenCenterX,
+      screenCenterY + 160,
+      "Start",
       this,
       () => {
         this.buttonClick.play();
-        // this.gameStartMessage.setText("Enjoy the game!").setScale(1);
-        // setTimeout(
-        //   function () {
-        //     if (this.clicked != true) {
-        //       this.clicked = true;
-        //       this.scene.start("SinglePlayer");
-        //     }
-        //   }.bind(this),
-        //   1000
-        // );
         this.scene.start("SinglePlayer");
       },
-      3
+      3,
+      15
     );
-    this.twoPlayer = new Button(
-      screenCenterX + 300,
-      screenCenterY + 100,
-      "Two Player",
-      this,
-      () => {
-        this.buttonClick.play();
-        setTimeout(
-          function () {
-            // this.scene.start("SinglePlayer");
-          }.bind(this),
-          1200
-        );
-      },
-      3
-    );
-    this.freeplayButton = new Button(
-      screenCenterX,
-      screenCenterY + 300,
-      "Freeplay",
-      this,
-      () => {
-        this.buttonClick.play();
-        this.scene.start("Freeplay");
-      },
-      3
-    );
+    // this.twoPlayer = new Button(
+    //   screenCenterX + 300,
+    //   screenCenterY + 100,
+    //   "Two Player",
+    //   this,
+    //   () => {
+    //     this.buttonClick.play();
+    //     setTimeout(
+    //       function () {
+    //         // this.scene.start("SinglePlayer");
+    //       }.bind(this),
+    //       1200
+    //     );
+    //   },
+    //   3
+    // );
+    // this.freeplayButton = new Button(
+    //   screenCenterX,
+    //   screenCenterY + 300,
+    //   "Freeplay",
+    //   this,
+    //   () => {
+    //     this.buttonClick.play();
+    //     this.scene.start("Freeplay");
+    //   },
+    //   3
+    // );
 
     this.betterWithText = this.add
       .text(screenCenterX, screenCenterY - 70, "Better with controller!", {})
@@ -151,8 +142,8 @@ export default class MainMenu extends Base {
     }
 
     this.text = this.add.text(
-      screenCenterX - 310,
-      screenCenterY + 140,
+      screenCenterX,
+      screenCenterY + 200,
       "X on controller"
     );
     this.text
@@ -162,34 +153,34 @@ export default class MainMenu extends Base {
       .setResolution(8)
       .setOrigin(0.5, 0.5);
 
-    this.square = this.add
-      .text(screenCenterX - 80, screenCenterY + 335, "□ ")
-      .setFont(" Verdana, Audiowide")
-      .setFontSize(35)
-      .setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff)
-      .setResolution(8)
-      .setOrigin(0.5, 0.5);
+    // this.square = this.add
+    //   .text(screenCenterX - 80, screenCenterY + 335, "□ ")
+    //   .setFont(" Verdana, Audiowide")
+    //   .setFontSize(35)
+    //   .setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff)
+    //   .setResolution(8)
+    //   .setOrigin(0.5, 0.5);
 
-    this.freeplayControls = this.add
-      .text(screenCenterX, screenCenterY + 335, " on controller")
-      .setFont(" Verdana, Audiowide")
-      .setFontSize(20)
-      .setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff)
-      .setResolution(8)
-      .setOrigin(0.5, 0.5);
+    // this.freeplayControls = this.add
+    //   .text(screenCenterX, screenCenterY + 335, " on controller")
+    //   .setFont(" Verdana, Audiowide")
+    //   .setFontSize(20)
+    //   .setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff)
+    //   .setResolution(8)
+    //   .setOrigin(0.5, 0.5);
 
     // remove after finishing single and two player modes
-    this.text = this.add.text(
-      screenCenterX + 300,
-      screenCenterY + 140,
-      "Coming soon. . ."
-    );
-    this.text
-      .setFont(" Verdana, Audiowide")
-      .setFontSize(20)
-      .setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff)
-      .setResolution(8)
-      .setOrigin(0.5, 0.5);
+    // this.text = this.add.text(
+    //   screenCenterX + 300,
+    //   screenCenterY + 140,
+    //   "Coming soon. . ."
+    // );
+    // this.text
+    //   .setFont(" Verdana, Audiowide")
+    //   .setFontSize(20)
+    //   .setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff)
+    //   .setResolution(8)
+    //   .setOrigin(0.5, 0.5);
 
     this.input.gamepad.on(
       "down",

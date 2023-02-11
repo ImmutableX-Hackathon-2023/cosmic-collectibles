@@ -1,9 +1,9 @@
 export default class Button {
-  constructor(x, y, label, scene, callback, scale) {
+  constructor(x, y, label, scene, callback, scale, padding = 10) {
     const button = scene.add
       .text(x, y, label, { fontFamily: "Audiowide" })
       .setOrigin(0.5)
-      .setPadding(10)
+      .setPadding(padding)
       .setScale(scale)
       .setResolution(8)
       .setStyle({ backgroundColor: "#111" })
