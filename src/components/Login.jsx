@@ -27,11 +27,9 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <h1>Welcome {account}</h1>
-      <p>You are now logged in with MetaMask</p>
-    </div>
+    <Redirect to="/game" />
   );
+
 };
 
 export default Login;
