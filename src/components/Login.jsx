@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
+
 import { useAccountContext } from '../hooks/AccountContext';
 const Login = () => {
   const [web3, setWeb3] = useState(null);
@@ -38,7 +39,11 @@ const Login = () => {
   }
 
   return (
-    <Redirect to="/game" />
+    // <Redirect to="/game" />
+    <div>
+      <h1>You have logged in!!</h1>
+      <button onClick={() => window.location.href="/galaxy-quest/game"}>Start game</button>
+    </div>
   );
 
 };
