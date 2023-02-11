@@ -4,6 +4,7 @@ import About from "./components/About";
 import Controls from "./components/Controls";
 import Error from "./components/Error";
 import Game from "./components/Game";
+import Login from "./components/Login"
 
 export default function App() {
   return (
