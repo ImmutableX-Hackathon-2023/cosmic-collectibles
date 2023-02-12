@@ -28,6 +28,7 @@
   <summary><h2 style="display: inline-block"> 📝 Features
  </h2></summary>
 
+This is the server-side part of the game cosmic collectibles.
 
 - [x] Transition to React
 
@@ -65,8 +66,7 @@ Make sure you have `node`, `git` and `npm` installed before beginning.
 > 📜 Install Dependencies:
 
 ```
-git clone https://github.com/Kisokumar/galaxy-quest
-cd galaxy-quest
+cd cosmic-collectibles-client
 
 npm i
 ```
