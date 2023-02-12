@@ -1,5 +1,8 @@
 import Base from "./Base";
 import Button from "./utils/Button";
+function makeUpperCase(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 export default class MainMenu extends Base {
   constructor() {
@@ -16,8 +19,8 @@ export default class MainMenu extends Base {
     this.load.image("rocket", "rocket.png");
     this.load.atlas(
       "rocketsprite",
-      `rockets/${this.retrievedRocket.name}.png`,
-      "rocket-sprite.json"
+      `rockets/${JSON.parse(this.retrievedRocket).name}.png`,
+      "sprites.json"
     );
 
     this.load.image("meteor", "meteor.png");

@@ -6,9 +6,7 @@ import { useAccountContext } from "../hooks/AccountContext";
 const Login = () => {
   const [web3, setWeb3] = useState(null);
   const [account, setAccount] = useState(null);
-  // console.log(account);
   localStorage.setItem("wallet_address", account);
-  console.log(localStorage.getItem("wallet_address"));
 
   useEffect(() => {
     // Check if the user has MetaMask installed and activated
@@ -37,10 +35,13 @@ const Login = () => {
 
   return (
     // <Redirect to="/game" />
-    <div>
-      <h1>You have logged in!!</h1>
-      <button onClick={() => (window.location.href = "/galaxy-quest/game")}>
-        Start game
+    <div className="bg-white p-6 rounded-lg shadow-lg">
+      <h1 className="text-lg font-medium mb-4">You have logged in!!</h1>
+      <button
+        className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
+        onClick={() => (window.location.href = "/galaxy-quest/choose")}
+      >
+        Click to continue. . .
       </button>
     </div>
   );

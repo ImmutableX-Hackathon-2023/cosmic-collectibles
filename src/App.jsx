@@ -6,6 +6,7 @@ import Controls from "./components/Controls";
 import Error from "./components/Error";
 import Game from "./components/Game";
 import Login from "./components/Login";
+import Mint from "./components/Mint";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/" element={<Login />} />
         <Route path="/choose" element={<ChooseRocket />} />
         <Route path="/game" element={<Game />} />
+        <Route path="/mint" element={<Mint />} />
         <Route path="/about" element={<About />} />
         <Route path="/controls" element={<Controls />} />
         <Route path="/*" element={<Error />} />

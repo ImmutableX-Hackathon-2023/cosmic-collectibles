@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.jumpy {
+    animation: MoveUpDown 4s ease-in-out infinite;
+    position: absolute;
+    top: 0;
+  }
+  
+  @keyframes MoveUpDown {
+    0%, 100% {
+      top: 380px;
+    }
+    50% {
+      top: 290px;
+    }
+  }

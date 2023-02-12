@@ -26,18 +26,17 @@ export default class SinglePlayer extends Base {
 
     // this.load.image("background", "bg.jpeg");
 
-    //oiip need to change
-    // this.load.image("rocket", `${retrievedRocket.name}.png`);
+    // need to change
     // console.log(`${retrievedRocket.name}.png`);
 
     this.load.image("meteor", "meteor.png");
     this.load.image("star", "star.png");
     this.load.image("laser", "laser.png");
-
+    this.load.image("rocket", "rocket.png");
     this.load.atlas(
       "rocketsprite",
-      `rockets/${this.retrievedRocket.name}.png`,
-      "rocket-sprite.json"
+      `rockets/${JSON.parse(this.retrievedRocket).name}.png`,
+      "sprites.json"
     );
   }
 
