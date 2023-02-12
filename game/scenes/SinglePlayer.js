@@ -105,6 +105,9 @@ export default class SinglePlayer extends Base {
     this.sound.stopByKey("thruster");
 
     let playing = false;
+
+    console.log(localStorage.getItem("wallet_address"));
+
     for (let i = 0; i < this.sound.sounds.length; i++) {
       if (this.sound.sounds[i].key === "gameMusic") {
         if (this.sound.sounds[i].isPlaying === true) {
