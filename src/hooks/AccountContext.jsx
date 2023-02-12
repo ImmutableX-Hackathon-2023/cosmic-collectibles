@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer} from "react";
+import { createContext, useContext, useReducer } from "react";
 
 export const AccountContext = createContext();
 
@@ -6,6 +6,7 @@ export const AccountContext = createContext();
 export const accountReducer = (state, action) => {
     switch (action.type){
         case('UPDATE'):
+            console.log(`ln10: ${action.payload}`);
             return{
                 account:action.payload
             }

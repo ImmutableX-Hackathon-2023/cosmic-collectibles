@@ -1,9 +1,10 @@
 import Phaser, { Game } from "phaser";
-import MainMenu from "./scenes/MainMenu";
-import SinglePlayer from "./scenes/SinglePlayer";
+
 import Freeplay from "./scenes/Freeplay";
-import Pause from "./scenes/Pause";
 import GameOver from "./scenes/GameOver";
+import MainMenu from "./scenes/MainMenu";
+import Pause from "./scenes/Pause";
+import SinglePlayer from "./scenes/SinglePlayer";
 
 export default function main() {
   const width = 1920;
