@@ -12,7 +12,6 @@ export default function main() {
   if (window.localStorage.getItem("mute") === null) {
     window.localStorage.setItem("mute", false);
   }
-  console.log(localStorage.getItem("wallet_address"));
 
   var config = {
     type: Phaser.AUTO,
