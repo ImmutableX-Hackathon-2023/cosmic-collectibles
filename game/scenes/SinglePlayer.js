@@ -24,11 +24,6 @@ export default class SinglePlayer extends Base {
     this.load.audio("gameMusic", "gameMusic.mp3");
     this.load.audio("thruster", "thruster.mp3");
 
-    // this.load.image("background", "bg.jpeg");
-
-    // need to change
-    // console.log(`${retrievedRocket.name}.png`);
-
     this.load.image("meteor", "meteor.png");
     this.load.image("star", "star.png");
     this.load.image("laser", "laser.png");
@@ -355,12 +350,12 @@ export default class SinglePlayer extends Base {
         ) {
           window.localStorage.setItem("highScore", this.rocket1.score);
         }
-        // this sound will be changed to win sound
-        this.emergencyText.setText("");
-        let asd = 200;
-        this.bg.setTint(this.hsv[asd].color);
-        this.meteors.setTint(this.hsv[asd].color);
-        this.startGameOver("SinglePlayer", this.rocket1.score, "Stars");
+        // this.emergencyText.setText("");
+        // let asd = 200;
+        // this.bg.setTint(this.hsv[asd].color);
+        // this.meteors.setTint(this.hsv[asd].color);
+        // this.startGameOver("SinglePlayer", this.rocket1.score, "Stars");
+        window.location.href = "/galaxy-quest/upgrade";
       }
     }
 

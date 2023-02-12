@@ -8,20 +8,52 @@ const upgrades = {
   Fuel: "Stay in space for longer! Collect more stars!",
 };
 // props name, image, speed, health, fuel, rating
-export default function Mint() {
+export default function Upgrade() {
+  const rocketJSON = localStorage.getItem("retrievedRocket");
+  const rocket = JSON.parse(rocketJSON);
+
+  const allRocketJSON = localStorage.getItem("allRocket");
+  const allRocket = allRocketJSON;
   const [upgrade, setUpgrade] = useState(
     "Increase your speed to evade meteors."
   );
+  console.log(allRocket);
 
-  const rocketJSON = localStorage.getItem("retrievedRocket");
-  const rocket = JSON.parse(rocketJSON);
+  async function upgradeFunction(toUpgrade) {
+    try {
+      const upgrade = await fetch(`http://localhost:4000/push`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          // wallet_address: localStorage.getItem("wallet_address"),
+          wallet_address: "0x3017D0C5E6B5fA7cEBF9F9aF40750025982a5B05",
+        },
+        body: {
+          id: "",
+          name,
+          description,
+          image_url,
+          health,
+          fuel,
+          speed,
+          rating,
+        },
+      });
+      const rocketjson = await upgrade.json();
+      return true;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }
 
   return (
     <div className="hv h-screen w-screen flex  justify-center align-center ">
       <div>
         <div className="w-[600px] justify-center align-center text-center mb-20 mt-20 bg-gradient-to-br from-green-300 via-blue-500 to-purple-600 text-white p-4 text-2xl font-bold rounded-lg">
-          Congratulations! You can upgrade your rocket!
+          Hooray! You can upgrade your rocket!
         </div>
+        {console.log(localStorage.getItem("wallet_address"))}
         <div className=" flex flex-col items-center justify-items-center ">
           <div className="block max-w-lg w-96 h-auto  p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
             {console.log(localStorage.getItem("retrievedRocket").name)}
@@ -68,9 +100,9 @@ export default function Mint() {
         <div className="flex justify-center">
           <button
             className="scale-[165%] mt-10 bg-blue-500 text-white font-bold py-2 px-4 rounded "
-            onClick={() => (window.location.href = "/galaxy-quest/game")}
+            onClick={() => upgradeFunction()}
           >
-            Mint!
+            Mint the upgrade!
           </button>
         </div>
       </div>

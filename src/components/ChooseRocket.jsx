@@ -4,6 +4,7 @@ import { RocketCard } from "./RocketCard";
 
 export default function ChooseRocket() {
   const [rocket, setRocket] = useState(null);
+  const [allRocket, setAllRocket] = useState(null);
   useEffect(() => {
     async function getRocket() {
       try {
@@ -11,10 +12,14 @@ export default function ChooseRocket() {
           method: "GET",
           mode: "cors",
           headers: {
+            // wallet_address: localStorage.getItem("wallet_address"),
             wallet_address: "0x3017D0C5E6B5fA7cEBF9F9aF40750025982a5B05",
           },
         });
         const rocketjson = await getRocket.json();
+        const allRocketJson = await getRocket.json();
+        setAllRocket(allRocketJson);
+        console.log(allRocketJson);
         setRocket(rocketjson[0].metadata);
         // document.cookie = `retrievedRocket=${rocket}`;
       } catch (error) {
@@ -26,6 +31,7 @@ export default function ChooseRocket() {
 
   useEffect(() => {
     window.localStorage.setItem("retrievedRocket", JSON.stringify(rocket));
+    window.localStorage.setItem("allRocket", JSON.stringify(allRocket));
   }, [rocket]);
 
   return (
