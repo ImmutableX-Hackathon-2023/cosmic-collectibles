@@ -1,5 +1,6 @@
 import Base from "./Base";
 import Button from "./utils/Button";
+import { get_wallet_address } from "../../src/components/Login2";
 
 export default class MainMenu extends Base {
   constructor() {
@@ -21,6 +22,12 @@ export default class MainMenu extends Base {
   }
 
   create() {
+    this.wallet_address = get_wallet_address()
+    console.log()
+    console.log(this.wallet_address)
+
+
+
     this.pointer = this.input.activePointer;
     this.menuMusic = this.sound.add("menuMusic", { volume: 0.01, loop: true });
     this.buttonClick = this.sound.add("buttonClick", {
@@ -32,6 +39,7 @@ export default class MainMenu extends Base {
     this.sound.stopByKey("gameMusic");
     this.menuMusic.play();
     // window.localStorage.setItem("mute", false);
+    console.log(window.localStorage.getItem('wallet_address'));
     let localMute = window.localStorage.getItem("mute") || false;
     if (localMute === "false") {
       this.sound.mute = false;

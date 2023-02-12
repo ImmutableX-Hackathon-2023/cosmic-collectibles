@@ -5,6 +5,9 @@ import GameOver from "./scenes/GameOver";
 import MainMenu from "./scenes/MainMenu";
 import Pause from "./scenes/Pause";
 import SinglePlayer from "./scenes/SinglePlayer";
+import {get_wallet_address} from "../src/components/Login2";
+
+// const get_wallet_address= require('../src/components/Login2')
 
 export default function main() {
   const width = 1920;
@@ -13,6 +16,9 @@ export default function main() {
   if (window.localStorage.getItem("mute") === null) {
     window.localStorage.setItem("mute", false);
   }
+
+  const wallet_address = get_wallet_address();
+  window.localStorage.setItem('wallet_address', wallet_address);
 
   var config = {
     type: Phaser.AUTO,
