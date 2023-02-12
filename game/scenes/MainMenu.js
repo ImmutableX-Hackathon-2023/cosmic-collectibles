@@ -7,15 +7,20 @@ export default class MainMenu extends Base {
     this.singlePlayer;
     this.twoPlayer;
     this.freeplayButton;
+    this.retrievedRocket = this.getMetaData();
   }
   preload() {
     this.load.image("background", "bg.jpeg");
     this.load.image("meteor", "meteor.png");
     this.load.image("laser", "laser.png");
     this.load.image("rocket", "rocket.png");
-    this.load.atlas("rocketsprite", "rocket-sprite.png", "rocket-sprite.json");
-    this.load.image("meteor", "meteor.png");
+    this.load.atlas(
+      "rocketsprite",
+      `rockets/${this.retrievedRocket.name}.png`,
+      "rocket-sprite.json"
+    );
 
+    this.load.image("meteor", "meteor.png");
     this.load.audio("menuMusic", "menuMusic.mp3");
     this.load.audio("buttonClick", "buttonClick.mp3");
   }
@@ -65,7 +70,7 @@ export default class MainMenu extends Base {
     // this.gameStartMessage.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
 
     this.title = this.add
-      .text(screenCenterX, screenCenterY - 180, "Galaxy Quest", {})
+      .text(screenCenterX, screenCenterY - 220, "Cosmic Collectibles", {})
       .setFont(" Verdana, Audiowide")
       .setFontSize(30)
       .setScale(4)
@@ -115,10 +120,10 @@ export default class MainMenu extends Base {
     // );
 
     this.betterWithText = this.add
-      .text(screenCenterX, screenCenterY - 70, "Better with controller!", {})
+      .text(screenCenterX, screenCenterY - 150, "Better with controller!", {})
       .setFont(" Verdana, Audiowide")
       .setFontSize(25)
-      .setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff)
+      .setTint(0xff0ff, 0x9effff, 0xff0fff, 0x9effff)
       .setResolution(8)
       .setOrigin(0.5, 0.5);
 

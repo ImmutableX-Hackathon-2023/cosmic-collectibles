@@ -9,6 +9,19 @@ export default class Base extends Phaser.Scene {
     super(key);
   }
 
+  getMetaData() {
+    //testing
+    return {
+      name: "supernova",
+      image: "thunderbird",
+      speed: 8,
+      health: 3,
+      fuel: 4,
+      rating: 2,
+      id: "00f4cea2-aa41-11ed-afa1-0242ac120002",
+    };
+  }
+
   createKeys() {
     //keys player 1
     this.spaceKey = this.input.keyboard.addKey(
@@ -44,7 +57,7 @@ export default class Base extends Phaser.Scene {
       frames: this.anims.generateFrameNames("rocketsprite", {
         prefix: "firing",
         start: 0,
-        end: 7,
+        end: 3,
         zeroPad: 3,
       }),
       repeat: 0,
@@ -78,9 +91,12 @@ export default class Base extends Phaser.Scene {
 
   // adds rocket to game env using given sprite and coords
   addRocket(sprite, x, y) {
+    this.retrievedRocket = this.getMetaData();
     let rocket = this.physics.add.sprite(x, y, sprite).setScale(0.35);
-    rocket.Health = 100000;
-    rocket.Fuel = 100000;
+    this.healthRatio = this.retrievedRocket.health / 10;
+    rocket.Health = 100000 * (this.healthRatio + 0.9);
+    this.fuelRatio = this.retrievedRocket.fuel / 10;
+    rocket.Fuel = 100000 * (this.fuelRatio + 0.9);
     rocket.score = 0;
     rocket.rotateValue = 0;
     rocket.checkWorldBounds = true;
@@ -153,8 +169,14 @@ export default class Base extends Phaser.Scene {
       rocket.anims.play("firing", true);
       let x = 2 * Math.sin(rocket.rotation);
       let y = -1 * 2 * Math.cos(rocket.rotation);
-      rocket.setVelocityX(rocket.body.velocity.x + x * strength * 2);
-      rocket.setVelocityY(rocket.body.velocity.y + y * strength * 2);
+      this.speedRatio = 0.4444 * this.retrievedRocket.speed;
+      this.speedRatio += 0.55555;
+      rocket.setVelocityX(
+        rocket.body.velocity.x + x * strength * this.speedRatio
+      );
+      rocket.setVelocityY(
+        rocket.body.velocity.y + y * strength * this.speedRatio
+      );
     }
   }
 

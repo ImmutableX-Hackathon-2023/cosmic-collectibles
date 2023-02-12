@@ -6,12 +6,10 @@ function rng(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// disable right click
-// document.addEventListener("contextmenu", (event) => event.preventDefault());
-
 export default class SinglePlayer extends Base {
   constructor() {
     super("SinglePlayer");
+    this.retrievedRocket = this.getMetaData();
   }
 
   // preload assets
@@ -26,12 +24,21 @@ export default class SinglePlayer extends Base {
     this.load.audio("gameMusic", "gameMusic.mp3");
     this.load.audio("thruster", "thruster.mp3");
 
-    this.load.image("background", "bg.jpeg");
-    this.load.image("rocket", "rocket.png");
+    // this.load.image("background", "bg.jpeg");
+
+    //oiip need to change
+    // this.load.image("rocket", `${retrievedRocket.name}.png`);
+    // console.log(`${retrievedRocket.name}.png`);
+
     this.load.image("meteor", "meteor.png");
     this.load.image("star", "star.png");
     this.load.image("laser", "laser.png");
-    this.load.atlas("rocketsprite", "rocket-sprite.png", "rocket-sprite.json");
+
+    this.load.atlas(
+      "rocketsprite",
+      `rockets/${this.retrievedRocket.name}.png`,
+      "rocket-sprite.json"
+    );
   }
 
   // game environment setup
@@ -56,7 +63,10 @@ export default class SinglePlayer extends Base {
     this.createKeys();
 
     // player 1 rocket and stats
+
+    //oiip need to change
     this.rocket1 = this.addRocket("rocket", screenCenterX, screenCenterY);
+
     this.rocket1.body.setSize(90, 170);
     this.rocket1.setImmovable(true);
     this.rocket1.gameMode = "SinglePlayer";
