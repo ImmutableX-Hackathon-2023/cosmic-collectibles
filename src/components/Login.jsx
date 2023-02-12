@@ -1,49 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 import Web3 from 'web3';
 import { useAccountContext } from '../hooks/AccountContext';
 
-const Login = () => {
-  const [web3, setWeb3] = useState(null);
-  // const [account, setAccount] = useState(null);
-  const {account, dispatch}= useAccountContext()
-  // console.log(account);
+const Login = () => {window.addEventListener('load', async () => {
+     const {account, dispatch}= useAccountContext();
 
-  useEffect(() => {
-    // Check if the user has MetaMask installed and activated
-    console.log('run ethereum')
+    // Modern dapp browsers...
     if (window.ethereum) {
-      const web3 = new Web3(window.ethereum);
-      setWeb3(web3);
+        window.web3 = new Web3(ethereum);
+        try {
+            // Request account access if needed
+            const accountId  = await ethereum.send('eth_requestAccounts');
+            console.log(`ln15 login: ${accountId}`)
+            console.log(`ln16 login: ${account}`)
+            // Acccounts now exposed
+            dispatch({type:'UPDATE', payload:accountId[0]});
+            console.log(`ln18 login: ${account}`)
 
-      // Request the user to access their MetaMask account
-      const requestUser = async() => {
-        // window.ethereum.enable().then((accounts) => {
-        // console.log(`accounts ln21: ${accounts}`);
-        // console.log(`accounts ln22: ${accounts[0]}`);
-        // dispatch({type: 'UPDATE', payload:accounts[0]})
-        // console.log(`account in login ln25: ${account}`)
-        // })
-
-
-        const accounts = await window.ethereum.enable();
-        console.log(`accounts ln21: ${accounts}`);
-        console.log(`accounts ln22: ${accounts[0]}`);
-        dispatch({type: 'UPDATE', payload:accounts[0]})
-        console.log(`account in login ln25: ${account}`)
-        
-      }
-      requestUser();
-    } 
+            return (<div> Logged In</div>)
+        } 
+        catch (error) {
+           return( <div>Fix Up</div>)
+        }
+    }
   
-  }, []);
-  console.log(`ln29 in login: ${account}`)
-  if(!window.ethereum){
-    console.error('MetaMask is not installed or activated');
-      return <div>MetaMask is not installed or activated</div>;
-  }
+    // Non-dapp browsers...
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
 
-  if (!web3 || !account) {
+     if (!web3 || !account) {
     return <div>Loading...</div>;
   }
 
@@ -55,6 +42,7 @@ const Login = () => {
     </div>
   );
 
-};
+});
+}
 
 export default Login;
